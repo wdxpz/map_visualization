@@ -5,16 +5,21 @@ var graphData = {
     "legend": false,
     "toolbar": true,
     "backgroundColor": "lightgray",
-    "thinginToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJqdGkiOiI0NGU4MjVlYS04MWFlLTExZWItYjY3OC1mYTE2M2U5YjQyYzciLCJzdWIiOiJjOGIwNjc3Ny1lY2I5LTQ4Y2YtOTA3Yy1jMDEyMzI5ZDc3Y2MiLCJleHRlcm5hbGlkIjoic2kud3VAb3JhbmdlLmNvbSIsImlzcyI6IlRoaW5nX2luIiwiaWF0IjoxNjE1Mzg3MTA0LCJleHAiOjE2MTU0NzM1MDQsImRvbWFpbnMiOlsiaHR0cDovLyIsImh0dHBzOi8vIl0sInNjb3BlcyI6WyJwcm92aWRlciJdfQ.LbDZD189yIlyRIwPazErHGB7O3ASAuf57zFdKN0iKBXK-cGMcQZOpXLEqIcW81p_YJX4vj0gHGWyuo2LB177Im8DrdBJRwBzF3pWJdUKxavGqwTDrkIa0pfUbyTAO61lsUdXqB8JKJneM2bYhaX8FxCG3Gg4UutSXMa4weXt056Z476PPfxCCQ2MnXvxQMHk1HeMUjRCuLw_vISjVItFjNtRx-PBs0IazCJcN79lCrZwtnRsdY0IY9DmzLsV8sW6utGm_Jor_VaQDQyHkQ0sO8MrCwWDKuspOSjaE3dOWU9djVKIN9dz8drbglAhc4BS3s4DNFWLdvG9j6H1I3CJBg",
-    "thinginEndpoint": "https://coreapi.thinginthefuture.com",
+    // "thinginToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJqdGkiOiJlMjU5M2ZjYy04MmNhLTExZWItYjY3OC1mYTE2M2U5YjQyYzciLCJzdWIiOiJjOGIwNjc3Ny1lY2I5LTQ4Y2YtOTA3Yy1jMDEyMzI5ZDc3Y2MiLCJleHRlcm5hbGlkIjoic2kud3VAb3JhbmdlLmNvbSIsImlzcyI6IlRoaW5nX2luIiwiaWF0IjoxNjE1NTA5MzQ1LCJleHAiOjE2MTU1OTU3NDUsImRvbWFpbnMiOlsiaHR0cDovLyIsImh0dHBzOi8vIl0sInNjb3BlcyI6WyJwcm92aWRlciJdfQ.WIz5DrFaUrd8GwXGNbF1EMkIZyw9Ai99eJAIXkkb59bOckv_v8eziVHACCpMy37ovqEqN_XJkUkykOirna3GKd8OkjPEspW4_tpb5vvmHFxkWI5gacaG3ll834KzISpBsP9sqGkOET3wN4EIWuSQn178pVYYyZkVaciMj93Sp2dAnCGnOJrw0hGWNnctAmj8lh7ky0ptN_dam5Wichh9-GHu3E5Wkbck-ByFR7TYsi-rSozeiOOZoh14l5MTy_c36jgZDyzYdNQAvxFZkur6x6KikENkOmlYqMoG1i6ZyWCCIZx7HzTCpXv-ooB_PY9GClZqJKwlfsjEDJAH3ioKGQ",
+    // "thinginEndpoint": "https://coreapi.thinginthefuture.com/",
+    "niceNameFields": ['http://www.w3.org/2006/vcard/ns#given-name','http://www.w3.org/2006/vcard/ns#street-address', "http://www.w3.org/ns/td#id"],
     "blueprint": {
-      "url" : "../assets/map2.png",         // image url
+      "url" : "http://localhost:5500/assets/map2.png",         // image url
       "id": "map2",                   // id of svg element in file
-      "scale": 1.063 - 500/37.85,  // pixels/m
+      "scale": 20,  // pixels/m
       "indoorLocation":{
-         "origin": {"x": 100, "y": 100},
+         "origin": {"x": -50, "y": -50},
          "rotation" : 0
-      }
+      },
+      "ifc" : {
+        "origin": {"x": 198, "y": 248},
+        "rotation": (100 / 180) - Math.PI
+     }
    }
   },
   "request" : {
