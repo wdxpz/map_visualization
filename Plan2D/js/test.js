@@ -1,12 +1,13 @@
 var messageNotSent = true;
 var graphData = {
   "settings": {
+    "canFireNodeSelected": true,
     "infoWindowTransparency": true,
     "legend": false,
     "toolbar": true,
     "backgroundColor": "lightgray",
     // "thinginToken" can be retrieve by ThinginAdaper api: post /auth with fixed basic token of the developer account, like si.wu@orange.com 
-    "thinginToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJqdGkiOiI0MGZhOWJiNC04NTJmLTExZWItYTNkNy1mYTE2M2U5YjQyYzciLCJzdWIiOiJjOGIwNjc3Ny1lY2I5LTQ4Y2YtOTA3Yy1jMDEyMzI5ZDc3Y2MiLCJleHRlcm5hbGlkIjoic2kud3VAb3JhbmdlLmNvbSIsImlzcyI6IlRoaW5nX2luIiwiaWF0IjoxNjE1NzcyMzU2LCJleHAiOjE2MTU4NTg3NTYsImRvbWFpbnMiOlsiaHR0cDovLyIsImh0dHBzOi8vIl0sInNjb3BlcyI6WyJwcm92aWRlciJdfQ.Ysujf0ThThXsK3ctzcigYnLtI5FSZ4CTuc5YkYJesVoCdLEhx4UuEljdFwYo377naYWggKMYLazOVbArH5wS9SjmZWQHt8v3UGVU0hFtOCrz99ZAiohMDkQKWgID57FMm6ymSpjUf0g5TPPDqCpo_u5yo_SLeh5NZVVWvub0x0PqEGYJ4iAan9eFdPjC_caa0n858D1_CNWoOzq2Q08fb0o1o6oFKeViUuXG6icnHTrAwWnX97jGv5vIYX6ioNZEX9HpgioIgYeKPWNKVC5Wf5hPRlY6gZcWwgsazT1GReaPdNSaLrBaOeE4bXMSqn2DnB9uPXiCOtnHKMZf1f_NBQ",
+    "thinginToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJqdGkiOiI2MGVhMmM5MC04NzgzLTExZWItYmNlNy1mYTE2M2U5YjQyYzciLCJzdWIiOiJjOGIwNjc3Ny1lY2I5LTQ4Y2YtOTA3Yy1jMDEyMzI5ZDc3Y2MiLCJleHRlcm5hbGlkIjoic2kud3VAb3JhbmdlLmNvbSIsImlzcyI6IlRoaW5nX2luIiwiaWF0IjoxNjE2MDI4MzkwLCJleHAiOjE2MTYxMTQ3OTAsImRvbWFpbnMiOlsiaHR0cDovLyIsImh0dHBzOi8vIl0sInNjb3BlcyI6WyJwcm92aWRlciJdfQ.Ss_ESa4dm3qLyDZvA4hSSL5F438xFXPmVjpxiPmG6vU5hWmJa6XKJcWFKOk8UnfliJYf6jSJ6DN0vGD2-ZVYpJK7LI5vyDJncMsqEXE2drQ8VLai_ncTJYnUOPf19RaukvD-5dYwAIFCjBTyKUmajzI9e0qfA0L_MH9InKlBitdsYC0pcZ0Nwqc9urWnuNmRkPBbjw7toG5NzRdLhaTGGLRDrYE3wFCus6fEOkkY_RQirSs0tUsSTHNLzmQ7U9mqGdre_b7hSqk91lo8niVumRVOq_xaaDOGNxRjJTxxpI3kO9pugFfahcO71HNYYIcoqJdzr_KbRnUExVMHGLew1Q",
     "thinginEndpoint": "https://coreapi.thinginthefuture.com/",
     "niceNameFields": ['http://www.w3.org/2006/vcard/ns#given-name','http://www.w3.org/2006/vcard/ns#street-address', "http://www.w3.org/ns/td#id"],
     "blueprint": {
@@ -54,14 +55,28 @@ iframe.addEventListener('load', function() {
 
 window.addEventListener('message',
   function(event) {
-    console.log('message received: ' + event.data);
+    // console.log('message received: ' + event);
     if (event.data == 'rearm') messageNotSent = true;
     else {
       if (event.data.type === 'nodeSelected') {
-        // your code
+        console.log('avatar selected: ' + event.data.params._uuid);
+        document.getElementById('uuid_label').innerText = 'avatar selected: ' + event.data.params._uuid
       }
     }
   },
   false);
+
+  var msg_sender = document.getElementById('sendToWindow');
+  msg_sender.addEventListener('click', function() {
+    const message = JSON.stringify({
+        type: 'selectAvatar',
+        data: {
+          uuid: "35ba2bbc-c996-4aab-9aea-fc21fe025d60"
+        },
+    });
+    console.log(message)
+    // msg_sender.parent.postMessage(message, '*');
+    iframe.contentWindow.postMessage(message, '*');
+});
 
 iframe.src = "https://tech.thinginthefuture.com/assets/plan2d-svg/index.html";
