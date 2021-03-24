@@ -76,7 +76,7 @@ function generateGraphConfig() {
       'thinginEndpoint': 'https://coreapi.thinginthefuture.com/',
       'niceNameFields': ['http://www.w3.org/2006/vcard/ns#given-name', 'http://www.w3.org/2006/vcard/ns#street-address', 'http://www.w3.org/ns/td#id'],
       'blueprint': {
-        'url': 'https://github.com/wdxpz/map_visualization/raw/main/Plan2D/assets/map2.png',
+        'url': 'https://github.com/wdxpz/map_visualization/raw/main/assets/map2.png',
         'id': 'map2',
         'scale': 20,
         'indoorLocation': {
