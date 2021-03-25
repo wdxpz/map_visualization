@@ -128,14 +128,14 @@ function main() {
     graphEl['contentWindow'].postMessage(graphConfig, '*')
   })
 
-  // Change label content when avatar was clicked in graph
+  // receive avatar UUID when avatar was clicked in Plan2D
   addEventListenerForEl(window, 'message', function (event) {
     if (event.data.type === 'nodeSelected') {
       document.getElementById('uuid_label').innerText = 'avatar selected: ' + event.data.params._uuid
     }
   })
 
-  // Highlight a avatar by send its uuid
+  // Highlight a avatar by send its uuid to Plan2D
   var msg_sender = document.getElementById('sendToWindow')
   addEventListenerForEl(msg_sender, 'click', function () {
     const message = JSON.stringify({
