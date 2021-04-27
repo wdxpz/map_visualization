@@ -59,7 +59,7 @@ function getToken() {
  * @description 'blueprint.url' means the image url of tilelayer
  * @description 'blueprint.id' means the id of svg element in file
  * @description 'blueprint.scale' means pixels/m, it should be equal to 1.0/map.yaml.resolution
- * @description 'blueprint.indoorLocation' means it should be equal to 'x': map.yaml.origin[0]/map.yaml.resolution, 'y': map.yaml.origin[1]/map.yaml.resolution
+ * @description 'blueprint.indoorLocation' means it should be equal to 'x': map.yaml.origin[0]/map.yaml.resolution, 'y': map_height - map.yaml.origin[1]/map.yaml.resolution
  * @description see more params' meaning in https://wiki.thinginthefuture.com/public/Map_and_graph_viewers
  * @return {object} graphConfig
 */
@@ -76,13 +76,14 @@ function generateGraphConfig() {
       'thinginEndpoint': 'https://coreapi.thinginthefuture.com/',
       'niceNameFields': ['http://www.w3.org/2006/vcard/ns#given-name', 'http://www.w3.org/2006/vcard/ns#street-address', 'http://www.w3.org/ns/td#id'],
       'blueprint': {
-        'url': 'https://github.com/wdxpz/map_visualization/raw/main/assets/map2.png',
-        'id': 'map2',
+        //'url': 'https://github.com/wdxpz/map_visualization/raw/main/assets/map2.png',
+        'url': "https://raw.githubusercontent.com/wdxpz/map_visualization/main/assets/bj03_modified.png",
+        'id': 'bj03_modified',
         'scale': 20,
         'indoorLocation': {
           'origin': {
-            'x': 51.224998 * 20,
-            'y': 51.224998 * 20
+            'x': 27.6 * 20,
+            'y': 1088 - 32.4 * 20
           },
           'rotation': 0
         },
