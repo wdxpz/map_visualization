@@ -100,11 +100,15 @@ function generateGraphConfig() {
       'payload':
       {
         'query': {
-          '$class': {
-            '$in': [
-              'http://orange.com/labs/china/ontologies/Sniffer_Object.owl#Sniffer_Room'
-            ]
-          }
+          "$domain": "http://orange.bj.com/",
+          "$classes": {
+               "$in": [
+                  "http://orange.com/labs/china/ontologies/Sniffer_Object.owl#Sniffer_Tv",
+                  "http://orange.com/labs/china/ontologies/Sniffer_Object.owl#Sniffer_CoffeeMaker",
+                  "http://elite.polito.it/ontologies/dogont.owl#Sofa",
+                  "http://elite.polito.it/ontologies/dogont.owl#Printer"
+                ]
+            }
         },
         'view': {}
       },
@@ -142,7 +146,7 @@ function main() {
     const message = JSON.stringify({
       type: 'selectAvatar',
       data: {
-        uuid: '35ba2bbc-c996-4aab-9aea-fc21fe025d60'
+        uuid: 'ba648820-0a4b-4efb-9502-df1acef0ac49'
       },
     })
     graphEl.contentWindow.postMessage(message, '*')
